@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products on Sale</title>
+</head>
+<body>
+
+    <h1>Products on Sale</h1>
+
+    {% for product in products %}
+        <h3>
+         <a href="{% url 'product_detail' product.id %}">
+          {{ product.name }}
+         </a>
+        </h3>
+
+        <p>Price: {{ product.price }}</p>
+
+        <p>ON SALE!</p>
+
+        {% if product.is_available %}
+            <p>Availability: Available</p>
+        {% else %}
+            <p>Availability: Not available</p>
+        {% endif %}
+
+        <hr>
+    {% empty %}
+        <p>There are currently no products on sale.</p>
+    {% endfor %}
+
+    <a href="{% url 'category_list' %}">
+        Back to categories
+    </a>
+
+</body>
+</html>

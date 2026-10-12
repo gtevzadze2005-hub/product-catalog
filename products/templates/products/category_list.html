@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Categories</title>
+</head>
+<body>
+    <h1>Product Categories</h1>
+
+    <a href="{% url 'products_on_sale' %}">
+        Products on Sale
+    </a>
+
+    {% for category in categories %}
+        <h3>
+            <a href="{% url 'category_detail' category.id %}">
+                {{ category.name }}
+            </a>
+        </h3>
+
+        <p>Products in this category: {{ category.product_count }}</p>
+    {% endfor %}
+
+    <hr>
+
+    <h2>Available Products</h2>
+
+    {% for product in products %}
+        <div>
+            <h3>
+                <a href="{% url 'product_detail' product.id %}">
+                    {{ product.name }}
+                </a>
+            </h3>
+
+            <p>Price: {{ product.price }}</p>
+
+            {% if product.is_on_sale %}
+                <strong style="color: red;">SALE</strong>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No available products at the moment.</p>
+    {% endfor %}
+
+</body>
+</html>
