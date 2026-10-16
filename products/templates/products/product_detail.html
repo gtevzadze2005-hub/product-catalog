@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ product.name }}</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}
+    product details
+{% endblock %}
+
+{% block content %}
+
+ <div class="container mt-4">
+
     <h1>{{ product.name }}</h1>
 
     <p><strong>Price:</strong> {{ product.price }}</p>
@@ -36,5 +40,14 @@
     </p>
 
     <a href="{% url 'category_list' %}">Back to categories</a>
-</body>
-</html>
+ </div>
+ <a type="button" class="btn btn-primary" href='{% url "update_product" product_pk=product.pk %}' >Update product</a>
+ <form action = "{% url 'delete_product' product_pk=product.pk %}" method = 'post'>
+    {% csrf_token %}
+    <button
+        type="submit" class="btn btn-danger mt-4">
+        Delete product
+    </button>
+
+ </form>
+ {% endblock %}

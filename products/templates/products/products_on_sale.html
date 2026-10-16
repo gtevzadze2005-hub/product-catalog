@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Products on Sale</title>
-</head>
-<body>
 
+{% extends "base.html" %}
+
+{% block title %}
+   products in sale
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
     <h1>Products on Sale</h1>
 
     {% for product in products %}
@@ -34,5 +36,6 @@
         Back to categories
     </a>
 
-</body>
-</html>
+</div>
+
+{% endblock %}

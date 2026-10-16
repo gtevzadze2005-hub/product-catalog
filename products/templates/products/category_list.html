@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Categories</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}
+    Category list
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
     <h1>Product Categories</h1>
 
     <a href="{% url 'products_on_sale' %}">
@@ -43,5 +46,6 @@
         <p>No available products at the moment.</p>
     {% endfor %}
 
-</body>
-</html>
+</div>
+
+{% endblock %}

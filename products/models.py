@@ -6,7 +6,8 @@ class Category(models.Model):
 
     class Meta:
         db_table = "categories"
-
+    def __str__(self):
+        return self.name
 
 class Products(models.Model):
     name = models.CharField(max_length=200)
@@ -23,3 +24,5 @@ class Products(models.Model):
 
     class Meta:
         db_table = "products"
+    def __str__(self):
+        return self.name
